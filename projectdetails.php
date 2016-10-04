@@ -53,5 +53,19 @@ while($stmt->fetch()) {
 
 </ul>
 
+<h2>Resources</h2>
+<ul>
+<?php 
+$sql = 'SELECT `Resource-Name` FROM Resources WHERE `Resources-ID` = ?';
+$stmt = $link->prepare($sql);
+$stmt->bind_param('i', $cid);
+$stmt->execute();
+$stmt->bind_result($rnam);
+
+while($stmt->fetch()){
+	echo '<p>'.$rnam.'</p>';
+}
+?>
+</ul>
 </body>
 </html>
