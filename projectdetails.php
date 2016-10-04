@@ -6,31 +6,31 @@
 </head>
 
 <body>
-<h1>Client Information</h1>
+<h2>Client info</h2>
 <?php
-// 
 $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
 
 require_once 'dbcon.php';
 
-$sql = 'SELECT `Client-Name`, `Client-Adress`, `Client-Contact-Name`, `Client-Contact Phone`, `Zip_Code_Zip_Code_ID` FROM `Client`
-WHERE `Client-id`=?';
+$sql = 'SELECT `client-name`
+from client
+where `client-id` = ?;';
 
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);
 $stmt->execute();
-$stmt->bind_result($cnam, $cadr, $ccnam, $ccph, $czip);
+$stmt->bind_result($cnam);
 
 while($stmt->fetch()) { }
 
-echo '<h2>'.$cnam.'</h2>';
-echo '<p>Address: '.$cadr.', '.$czip.'<br />Contact Person: '.$ccnam.'<br /> Contact Phone: '.$ccph.' </p>';
+echo '<h2>'.$cnam.'</h1>';
 ?>
+</ul>
 
-
-<h2>Projects</h2>
+<h2>Project Details</h2>
 <ul>
-<?php
+<?php 
+
 $sql = 'select `project-name`, `project-description`, `project-start-date`, `project-end-date`, `other-project-details`
 from `project`
 where `project-id` = ?
@@ -42,10 +42,16 @@ $stmt->execute();
 $stmt->bind_result($pnam, $pdesc, $psd, $ped, $popid);
 
 while($stmt->fetch()) { 
-	echo '<li><a href="projectdetail.php?cid='.$cid.'">'.$pnam.' '.$pdesc.' '.$psd.' '.$ped.' '.$popid.'</a></li>';
+	echo '<p>'.'Project Name: '.$pnam.'</p>';
+	echo '<p>'.'Project Description: '.$pdesc.'</p>';
+	echo '<p>'.'Start Date: '.$psd.'</p>';
+	echo '<p>'.'End Date: '.$ped.'</p>';
+	echo '<p>'.'Other Project Details: '.$popid.'</p>';
+	
 }
-?>
+	?>
+
 </ul>
-     
+
 </body>
 </html>
