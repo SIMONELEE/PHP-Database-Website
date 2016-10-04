@@ -20,7 +20,7 @@ $stmt->bind_result($cid, $cnam);
 /*Becuase there are no questionmarks (placeholders) there are no step of bind_param */
 
 while($stmt->fetch()){
-	echo '<li><a href="filmlist.php?cid='.$cid.'">'.$cnam.'</a></li>'.PHP_EOL;
+	echo '<li><a href="clientdetails.php?cid='.$cid.'">'.$cnam.'</a></li>'.PHP_EOL;
 }
 
 ?>
