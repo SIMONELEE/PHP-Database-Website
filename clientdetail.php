@@ -6,35 +6,31 @@
 </head>
 
 <body>
-<h2>Client info</h2>
+<h1>Client Information</h1>
 <?php
+// 
 $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
 
 require_once 'dbcon.php';
 
-$sql = 'SELECT `client-name`, `client-adress`, `client-contact-name`, `client-contact phone`, `zip_code_zip_code_id`
-from client
-where `client-id` = ?;';
+$sql = 'SELECT `Client-Name`, `Client-Adress`, `Client-Contact-Name`, `Client-Contact Phone`, `Zip_Code_Zip_Code_ID` FROM `Client`
+WHERE `Client-id`=?';
 
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);
 $stmt->execute();
-$stmt->bind_result($cnam, $cadr, $ccnam, $ccphone, $czip);
+$stmt->bind_result($cnam, $cadr, $ccnam, $ccph, $czip);
 
 while($stmt->fetch()) { }
 
-echo '<h2>'.$cnam.'</h1>';
-	//combine to strings and make between them
-	echo '<h5>'.$cadr. ' ' .$czip.'</h5>';
-	echo '<h5>'.$ccnam.'</h5>';
-	echo '<h5>'.$ccphone.'</h5>';
+echo '<h2>'.$cnam.'</h2>';
+echo '<p>Address: '.$cadr.', '.$czip.'<br />Contact Person: '.$ccnam.'<br /> Contact Phone: '.$ccph.' </p>';
 ?>
-</ul>
+
 
 <h2>Projects</h2>
 <ul>
-<?php 
-
+<?php
 $sql = 'select `project-name`, `project-description`, `project-start-date`, `project-end-date`, `other-project-details`
 from `project`
 where `project-id` = ?
@@ -46,10 +42,10 @@ $stmt->execute();
 $stmt->bind_result($pnam, $pdesc, $psd, $ped, $popid);
 
 while($stmt->fetch()) { 
-	echo '<li><a href="projectdetails.php?cid='.$cid.'">'.$pnam.' '.$pdesc.' '.$psd.' '.$ped.' '.$popid.'</a></li>';
+	echo '<li><a href="projectdetail.php?cid='.$cid.'">'.$pnam.' '.$pdesc.' '.$psd.' '.$ped.' '.$popid.'</a></li>';
 }
 ?>
 </ul>
-
+     
 </body>
 </html>
