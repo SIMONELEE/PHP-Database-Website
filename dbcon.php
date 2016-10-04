@@ -2,7 +2,7 @@
 const DB_HOST = 'localhost';
 const DB_USER = 'root';
 const DB_PASS = '';
-const DB_NAME = 'PHP_DB';
+const DB_NAME = 'Project_VD';
 
 $link = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($link->connect_error) { 
