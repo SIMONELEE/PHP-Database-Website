@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<h2>Client info</h2>
+<h2>Project Information</h2>
 <?php
 $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
 
@@ -63,7 +63,8 @@ $stmt->execute();
 $stmt->bind_result($rnam);
 
 while($stmt->fetch()){
-	echo '<p>'.$rnam.'</p>';
+	echo '<li><a href="resourcedetails.php?cid='.$cid.'">'.$rnam.'</a></li>'.PHP_EOL;
+
 }
 ?>
 </ul>
