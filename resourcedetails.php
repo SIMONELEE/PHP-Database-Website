@@ -2,11 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Resource Details</title>
+<title>Untitled Document</title>
 </head>
 
 <body>
-<h2>Personal Resources</h2>
+<h2>Resource Details</h2>
 <ul>
 <?php 
 $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
@@ -45,12 +45,19 @@ $stmt->execute();
 $stmt->bind_result($pid, $rid);
 
 while($stmt->fetch()) { 
-	echo '<p>'.$pid.' ' .$rid. '</p>';
+	echo '<h5>Project ID</h5>';
+	echo '<p>'.$pid.'</p>';
+	echo '<h5>Resource ID</h5>';
+	echo '<p>'.$rid.'</p>';
 	
 }
 ?>
 </ul>
-
+<form action="delete.php" method="post">
+    	<input type="text" name="pid" placeholder="Project ID">
+        <input type="text" name="rid" placeholder="Resource ID">
+    	<input type="submit" value="Delete Resource">
+    </form>
 
 </body>
 </html>

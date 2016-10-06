@@ -20,4 +20,5 @@ else {
 //	echo $stmt->error;
 }
 ?>
-<hr>
+<br><br>
+<a href="index.php?fid=<?=$fid?>">Back to clients</a><br>
