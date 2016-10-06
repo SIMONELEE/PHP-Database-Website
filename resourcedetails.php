@@ -2,11 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Resource Details</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
+<?php require 'menu.php';?>
 <h2>Resource Details</h2>
+
 <ul>
 <?php 
 $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
@@ -22,16 +25,18 @@ $stmt->execute();
 $stmt->bind_result($rnam, $rdetail, $rtcid);
 
 while($stmt->fetch()) { 
-	echo '<p>'.$rnam.'</p>';
-	echo '<p>'.$rdetail.'</p>';
-	echo '<p>'.$rtcid.'</p>';
+	echo '<h1>'.$rnam.'</h1>';
+	echo '<p>'.'<b>'.'Resource Details: '.'</b>'.$rdetail.'</p>';
+	echo '<p>'.'<b>'.'Resource Type Code ID: '.'</b>'.$rtcid.'</p>';
+	echo '<br>';
+	
 }
 ?>
- <form type="button" action="allresources.php" method="get">
+ <form class="signupform" type="button" action="allresources.php" method="get">
  	<button>See all resources</button>
 </form>
 </ul>
-
+<br>
 <h2>Working projects</h2>
 <ul>
 <?php 
@@ -45,18 +50,16 @@ $stmt->execute();
 $stmt->bind_result($pid, $rid);
 
 while($stmt->fetch()) { 
-	echo '<h5>Project ID</h5>';
-	echo '<p>'.$pid.'</p>';
-	echo '<h5>Resource ID</h5>';
-	echo '<p>'.$rid.'</p>';
+	echo '<p>'.'<b>'.'Project ID: '.'</b>'.$pid.' '.'<b>'.'Resource ID: '.'</b>'.$rid.'</p>';
+	echo '<br>';
 	
 }
 ?>
 </ul>
-<form action="delete.php" method="post">
-    	<input type="text" name="pid" placeholder="Project ID">
-        <input type="text" name="rid" placeholder="Resource ID">
-    	<input type="submit" value="Delete Resource">
+<form class="signupform" action="delete.php" method="post">
+    	<input type="text" name="pid" placeholder="Project ID"><br>
+        <input type="text" name="rid" placeholder="Resource ID"><br>
+    	<button type="submit" value="Delete Resource">Delete Resource</button>
     </form>
 
 </body>

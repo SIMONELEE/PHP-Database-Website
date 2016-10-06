@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Project Details</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
+<?php require 'menu.php';?>
 <h2>Project Information</h2>
 <?php
 $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
@@ -23,10 +25,10 @@ $stmt->bind_result($cnam);
 
 while($stmt->fetch()) { }
 
-echo '<h2>'.$cnam.'</h1>';
+echo '<h1>'.$cnam.'</h1>';
 ?>
 </ul>
-
+<br>
 <h2>Project Details</h2>
 <ul>
 <?php 
@@ -42,18 +44,19 @@ $stmt->execute();
 $stmt->bind_result($pnam, $pdesc, $psd, $ped, $popid);
 
 while($stmt->fetch()) { 
-	echo '<p>'.'Project Name: '.$pnam.'</p>';
-	echo '<p>'.'Project Description: '.$pdesc.'</p>';
-	echo '<p>'.'Start Date: '.$psd.'</p>';
-	echo '<p>'.'End Date: '.$ped.'</p>';
-	echo '<p>'.'Other Project Details: '.$popid.'</p>';
+	echo '<p>'.'<b>'.'Project Name: '.'</b>'.$pnam.'</p>';
+	echo '<p>'.'<b>'.'Project Description: '.'</b>'.$pdesc.'</p>';
+	echo '<p>'.'<b>'.'Start Date: '.'</b>'.$psd.'</p>';
+	echo '<p>'.'<b>'.'End Date: '.'</b>'.$ped.'</p>';
+	echo '<p>'.'<b>'.'Other Project Details: '.'</b>'.$popid.'</p>';
+	echo '<br>';
 	
 }
 	?>
 
 </ul>
 
-
+<br>
 <h2>Resources</h2>
 <ul>
 <?php 
@@ -70,5 +73,6 @@ while($stmt->fetch()){
 }
 ?>
 </ul>
+<br>
 </body>
 </html>

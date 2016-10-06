@@ -2,13 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Client Details</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 
 <body>
+<?php require 'menu.php';?>
 
-<h2>Client info</h2>
+<h2>Client Information</h2>
 <?php
 $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
 
@@ -25,17 +27,17 @@ $stmt->bind_result($cnam, $cadr, $ccnam, $ccphone, $czip);
 
 while($stmt->fetch()) { }
 
-echo '<h3>'.$cnam.'</h3>';
+echo '<h1>'.$cnam.'</h1>' . '<br>';
 ?>
 <!--UPDATE DETAILS-->
-	<form action="update.php" method="post">
-    	<input type="hidden" name="$cid" value='<?=$cid?>'>
-        <input type="text" name="$cnam" placeholder="Client Name">
-    	<input type="submit" value="Update Name">
+	<form class="signupform" action="update.php" method="post">
+    	<input type="hidden" name="$cid" value='<?=$cid?>'> 
+        <input type="text" name="$cnam" placeholder="Client Name"> <br>
+    	<button type="submit" value="Update Name">Update Name</button>
     </form>
 <?php 
 	//combine to strings and make between them
-	echo '<h4>'.'Address:'.'</h4>';
+	echo '<h3>'.'Address:'.'</h3>';
 	echo '<p>'.$cadr. ' ' .$czip.'</p>';
 	?>
     <?php 
@@ -53,18 +55,18 @@ while($stmt->fetch()) {
 	?>
     
     <?php
-	echo '<h4>'.'Project Contact:'.'</h4>';
+	echo '<h3>'.'Project Contact:'.'</h3>';
 	echo '<p>'.$ccnam.'</p>';
-	echo '<h4>'.'Contact Number:'.'</h4>';
+	echo '<h3>'.'Contact Number:'.'</h3>';
 	echo '<p>'.$ccphone.'</p>';
 }
 ?>
 </ul>
-      
+   
+<br>   
 
 <h2>Projects</h2>
 <ul>
-
 <!--PROJECTS-->
 <?php 
 

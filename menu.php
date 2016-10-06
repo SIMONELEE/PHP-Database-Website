@@ -6,7 +6,8 @@ $curpage = basename($_SERVER['PHP_SELF']);
 /*Afterwards I've used a conditional statement that if the file .php (depending on which one is active) is the current/active page it should be in the class "active".*/
 ?>
 
-
+<header>
+<nav>
 <ul>
   <li><a href="index.php" <?php if($curpage == 'index.php') {
 	echo 'class="active"';
@@ -17,3 +18,5 @@ $curpage = basename($_SERVER['PHP_SELF']);
     
     
 </ul>
+</nav>
+</header>
