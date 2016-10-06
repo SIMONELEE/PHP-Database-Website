@@ -25,6 +25,6 @@ else {
 
 ?>
 <br>
-<a href="resourcedetails.php?cid=<?=$cid?>">Resource details</a>
+<a href="allresources.php?cid=<?=$cid?>">Resource details</a>
 </body>
 </html>
