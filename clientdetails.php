@@ -12,7 +12,7 @@ $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illeg
 
 require_once 'dbcon.php';
 
-$sql = 'SELECT `client-name`, `client-adress`, `client-contact-name`, `client-contact phone`, `zip_code_zip_code_id`
+$sql = 'SELECT `client-name`, `client-adress`, `client-contact-name`, `client-contact-phone`, `zip_code_zip_code_id`
 from client
 where `client-id` = ?;';
 
@@ -48,29 +48,11 @@ $stmt->bind_result($pnam, $pdesc);
 while($stmt->fetch()) { 
 	echo '<li><a href="projectdetails.php?cid='.$cid.'">'.$pnam.' '.$pdesc.'</a>';
 	?>
-<form action="deleteproject.php" method="post">
-<input type="hidden" name="pid" value="<?=$pid?>">
-<input type="hidden" name="cid" value="<?=$cid?>">
-<input type="submit" value="Delete">
-</form>	
-	
 	<?php '</li>';
 }
 
 ?>
 </ul>
-
-<!--ADD-->
-
-<form action="add.php" method="post">
-<input type="hidden" name="cid" value="<?=$cid?>">
-<input type="text" name="pnam" value="<?=$pnsm?>">
-<input type="text" name="" placeholder="<?=$pdesc?>">
-<input type="date" name="psd" value="<?=$psd?>">
-<input type="date" name="ped" value="<?=$ped?>">
-<input type="text" name="opd" value="<?=$opd?>">
-<input type="submit" value="Add to Project">
-</form>	
 
 
 

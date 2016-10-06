@@ -53,6 +53,7 @@ while($stmt->fetch()) {
 
 </ul>
 
+
 <h2>Resources</h2>
 <ul>
 <?php 
