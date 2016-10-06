@@ -35,7 +35,7 @@ echo '<h2>'.$cnam.'</h1>';
 <ul>
 <?php 
 
-$sql = 'select `project-name`, `project-description`, `project-start-date`, `project-end-date`, `other-project-details`
+$sql = 'select `project-name`, `project-description`
 from `project`
 where `project-id` = ?
 and `client-id` = `client-id`';
@@ -43,13 +43,36 @@ and `client-id` = `client-id`';
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);
 $stmt->execute();
-$stmt->bind_result($pnam, $pdesc, $psd, $ped, $popid);
+$stmt->bind_result($pnam, $pdesc);
 
 while($stmt->fetch()) { 
-	echo '<li><a href="projectdetails.php?cid='.$cid.'">'.$pnam.' '.$pdesc.' '.$psd.' '.$ped.' '.$popid.'</a></li>';
+	echo '<li><a href="projectdetails.php?cid='.$cid.'">'.$pnam.' '.$pdesc.'</a>';
+	?>
+<form action="deleteproject.php" method="post">
+<input type="hidden" name="pid" value="<?=$pid?>">
+<input type="hidden" name="cid" value="<?=$cid?>">
+<input type="submit" value="Delete">
+</form>	
+	
+	<?php '</li>';
 }
+
 ?>
 </ul>
+
+<!--ADD-->
+
+<form action="add.php" method="post">
+<input type="hidden" name="cid" value="<?=$cid?>">
+<input type="text" name="pnam" value="<?=$pnsm?>">
+<input type="text" name="" placeholder="<?=$pdesc?>">
+<input type="date" name="psd" value="<?=$psd?>">
+<input type="date" name="ped" value="<?=$ped?>">
+<input type="text" name="opd" value="<?=$opd?>">
+<input type="submit" value="Add to Project">
+</form>	
+
+
 
 </body>
 </html>

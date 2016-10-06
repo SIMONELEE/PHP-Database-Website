@@ -19,11 +19,12 @@ $stmt->bind_result($rnam, $rdetail, $rtcid);
 
 while($stmt->fetch()) { 
 	echo '<h2>' .$rnam. '</h2>';
-	echo '<p>' .$rdetail. '</p>';
-	echo '<p>' .$rtcid. '</p>';
+	echo '<p>'.$rtcid. ': ' .$rdetail. '</p>'.PHP_EOL;
+
 
 }
 ?>
+
 </ul>
 </body>
 </html>
