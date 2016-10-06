@@ -1,3 +1,11 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <body>
 <?php
 $cnam = filter_input(INPUT_POST, '$cnam', FILTER_SANITIZE_STRING) or die('Missing/illegal parameter1');

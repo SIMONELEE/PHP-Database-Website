@@ -1,5 +1,13 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Update</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
 <?php
-$cnam = filter_input(INPUT_POST, '$cnam', FILTER_SANITIZE_STRING) or die('Missing/illegal parameter');
+$cnam = filter_input(INPUT_POST,'$cnam', FILTER_SANITIZE_STRING) or die('Missing/illegal parameter');
 $cid = filter_input(INPUT_POST, '$cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter2');
 
 require_once 'dbcon.php';

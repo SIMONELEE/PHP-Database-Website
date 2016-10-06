@@ -1,7 +1,15 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Delete</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
 <?php
 $pid = filter_input(INPUT_POST, 'pid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter1');
 $rid = filter_input(INPUT_POST, 'rid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
-$cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter2');
 
 
 require_once 'dbcon.php';
