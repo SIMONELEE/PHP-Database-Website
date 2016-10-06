@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Project Details</title>
 </head>
 
 <body>
@@ -57,7 +57,8 @@ while($stmt->fetch()) {
 <h2>Resources</h2>
 <ul>
 <?php 
-$sql = 'SELECT `Resource-Name` FROM Resources WHERE `Resources-ID` = ?';
+$sql = 'SELECT `Resource-Name` 
+FROM Resources WHERE `Resources-ID` = ?';
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);
 $stmt->execute();

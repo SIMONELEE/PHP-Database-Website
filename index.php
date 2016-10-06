@@ -30,13 +30,13 @@ while($stmt->fetch()){
 ?>
 </ul>
 
-<h3> ADD A PROJECT </h3>
+<h3> Add a new client </h3>
 <form action="add.php" method="post">
-    <input type="text" name="$cnam" placeholder="Client Name">
-    <input type="text" name="$cad" placeholder="Adress">	
-    <input type="text" name="$ccnam" placeholder="Contact Name">
-    <input type="text" name="$cphone" placeholder="Contact Phone">
-      <input type="text" name="$czip" placeholder="Contact Zip">
+    <input type="text" name="$cnam" placeholder="Client Name"><br>
+    <input type="text" name="$cad" placeholder="Adress"><br>
+    <input type="text" name="$ccnam" placeholder="Contact Name"><br>
+    <input type="text" name="$cphone" placeholder="Contact Phone"><br>
+      <input type="text" name="$czip" placeholder="Contact Zip"><br>
     <input type="submit" value="Add New Client">
 </form
 
