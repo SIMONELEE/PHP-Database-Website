@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Clients</title>
+<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
+<header>
+<nav><?php require 'menu.php';?>
+</nav>
+</header>
 <h1>Clients</h1>
 
 <ul>
 
 <!--ADD PROJECT-->
-
-
 <?php
 require_once 'dbcon.php';
+
 
 $sql = 'SELECT `CLIENT-ID`, `Client-Name` FROM `Client`';
 $stmt = $link->prepare($sql);
@@ -30,8 +34,8 @@ while($stmt->fetch()){
 ?>
 </ul>
 
-<h3> Add a new client </h3>
-<form action="add.php" method="post">
+<h2> Add a new client </h2>
+<form  id="signupform" action="add.php" method="post">
     <input type="text" name="$cnam" placeholder="Client Name"><br>
     <input type="text" name="$cad" placeholder="Adress"><br>
     <input type="text" name="$ccnam" placeholder="Contact Name"><br>
