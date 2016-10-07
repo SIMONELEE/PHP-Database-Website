@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<?php require 'menu.php';?>
 <?php
 $cnam = filter_input(INPUT_POST, '$cnam', FILTER_SANITIZE_STRING) or die('Missing/illegal parameter1');
 $cad = filter_input(INPUT_POST, '$cad', FILTER_SANITIZE_STRING) or die('Missing/illegal parameter2');
@@ -29,4 +30,4 @@ else {
 }
 ?>
 <br><br>
-<a href="index.php?fid=<?=$fid?>">Back to clients</a><br>
+<a href="index.php?cid=<?=$cid?>">Back to clients</a><br>

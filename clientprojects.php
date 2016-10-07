@@ -19,6 +19,7 @@ require_once 'dbcon.php';
 $sql = 'SELECT `client-name`, `client-adress`, `client-contact-name`, `client-contact-phone`, `zip_code_zip_code_id`
 from client';
 
+
 $stmt = $link->prepare($sql);
 $stmt->execute();
 $stmt->bind_result($cnam, $cadr, $ccnam, $ccphone, $czip);

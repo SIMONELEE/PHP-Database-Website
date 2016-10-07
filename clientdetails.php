@@ -8,7 +8,7 @@
 
 
 <body>
-<?php require 'menu.php';?>
+<?php include 'menu.php';?>
 
 <h2>Client Information</h2>
 <?php
@@ -16,10 +16,7 @@ $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illeg
 
 require_once 'dbcon.php';
 
-$sql = 'SELECT `client-name`, `client-adress`, `client-contact-name`, `client-contact-phone`, `zip_code_zip_code_id`
-from client
-where `client-id` = ?';
-
+$sql = 'SELECT `Client-Name`, `Client-Adress`, `Client-Contact-Name`, `Client-Contact-Phone`, `Zip_Code_Zip_Code_ID` FROM `Client` WHERE `CLIENT-ID`=?';
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);
 $stmt->execute();
@@ -32,7 +29,7 @@ echo '<h1>'.$cnam.'</h1>' . '<br>';
 <!--UPDATE DETAILS-->
 	<form class="signupform" action="update.php" method="post">
     	<input type="hidden" name="$cid" value='<?=$cid?>'> 
-        <input type="text" name="$cnam" placeholder="Client Name"> <br>
+        <input type="text" name="$cnam" placeholder="New Client Name"> <br>
     	<button type="submit" value="Update Name">Update Name</button>
     </form>
 <?php 
@@ -70,10 +67,10 @@ while($stmt->fetch()) {
 <!--PROJECTS-->
 <?php 
 
-$sql = 'select `project-id`, `project-name`
-from `project`
-where `project-id` = ?
-and `client-id` = `client-id`';
+$sql = 'SELECT `Project-ID`, `Project-Name`
+FROM `Project`
+WHERE `Project-ID` = ?
+AND `CLIENT-ID` = `CLIENT-ID`';
 
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);

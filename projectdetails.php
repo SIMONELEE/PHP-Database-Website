@@ -14,9 +14,9 @@ $cid = filter_input(INPUT_GET, 'cid', FILTER_VALIDATE_INT) or die('Missing/illeg
 
 require_once 'dbcon.php';
 
-$sql = 'SELECT `client-name`
-from client
-where `client-id` = ?;';
+$sql = 'SELECT `Client-Name`
+from Client
+where `CLIENT-ID` = ?;';
 
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);
@@ -33,10 +33,10 @@ echo '<h1>'.$cnam.'</h1>';
 <ul>
 <?php 
 
-$sql = 'select `project-name`, `project-description`, `project-start-date`, `project-end-date`, `other-project-details`
-from `project`
-where `project-id` = ?
-and `client-id` = `client-id`';
+$sql = 'select `Project-Name`, `Project-Description`, `Project-Start-Date`, `Project-End-Date`, `Other-Project-Details`
+from `Project`
+where `Project-ID` = ?
+and `CLIENT-ID` = `CLIENT-ID`';
 
 $stmt = $link->prepare($sql);
 $stmt->bind_param('i', $cid);

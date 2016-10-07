@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<?php require 'menu.php';?>
 <?php
 $pid = filter_input(INPUT_POST, 'pid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter1');
 $rid = filter_input(INPUT_POST, 'rid', FILTER_VALIDATE_INT) or die('Missing/illegal parameter');
